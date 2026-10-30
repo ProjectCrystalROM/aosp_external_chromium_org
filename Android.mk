@@ -15,7 +15,7 @@ GYP_CONFIGURATION := Release
 # If the product is using a prebuilt libwebviewchromium then we need to skip
 # including most of the makefiles to avoid duplicate target definitions. Some
 # targets are still needed, so list their makefiles explicitly.
-ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
+ifneq ($(filter yes,$(PRODUCT_PREBUILT_WEBVIEWCHROMIUM))$(filter true,$(M1_SOURCE_WEBVIEW_M95)),)
 GYP_MAKEFILE_STEMS := \
 	$(addprefix $(CHROMIUM_DIR)/v8/tools/gyp/, \
 		js2c.host \
